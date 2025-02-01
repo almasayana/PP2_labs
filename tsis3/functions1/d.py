@@ -8,3 +8,6 @@ def is_prime(n):
 
 def filter_prime(numbers):
     return [num for num in numbers if is_prime(num)]
+
+numbers = list(map(int, input("Enter a list of numbers separated by spaces ").split()))
+print(filter_prime(numbers))

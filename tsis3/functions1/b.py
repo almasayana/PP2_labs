@@ -1,4 +1,5 @@
 def f_to_c(x):
-    return (x - 32) * 5/9
-faren = int(input())
-print(f_to_c(faren))
+    print((5 / 9) * (x - 32))
+ 
+f = float(input("Enter the temperature in Fahrenheit: "))   
+f_to_c(f)
