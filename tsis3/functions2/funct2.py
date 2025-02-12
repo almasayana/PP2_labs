@@ -81,9 +81,9 @@ def is_imdb_above_5_5(movie):
     return True if movie['imdb'] > 5.5 else False
 
 movie = {
-"name": "We Two",
-"imdb": 7.2,
-"category": "Romance"
+"name": "Usual Suspects", 
+"imdb": 7.0,
+"category": "Thriller"
 }
 print(is_imdb_above_5_5(movie)) 
 print()
