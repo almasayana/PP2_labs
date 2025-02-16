@@ -21,6 +21,8 @@ now = datetime.now()
 now2 = now.replace(microsecond=0)
 print("Datetime without microseconds:", now2)
 print()
+
+
 #4
 date1_str = input("Enter first date (yyyy-mm-dd): ")
 date2_str = input("Enter second date (yyyy-mm-dd): ")
