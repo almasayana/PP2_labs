@@ -73,7 +73,7 @@ print("26 text files created.")
 
 
 #7
-shutil.copyfile('output.txt','ex.txt')
+shutil.copyfile('first.txt','second.txt')
 
 
 #8
