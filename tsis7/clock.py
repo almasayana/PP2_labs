@@ -15,16 +15,15 @@ center = (400,300)
 running = True
 
 # Загрузка изображений
-background = pygame.image.load("clock_images/clock.png").convert_alpha()
-minute_hand = pygame.image.load("clock_images/min_hand.png").convert_alpha()
-second_hand = pygame.image.load("clock_images/sec_hand.png").convert_alpha()
+background = pygame.image.load("clock_images/clock.png")
+minute_hand = pygame.image.load("clock_images/min_hand.png")
+second_hand = pygame.image.load("clock_images/sec_hand.png")
 
 # Масштабирование фона
 background = pygame.transform.scale(background, (800, 600))
 
 
 while running:
-    '''обработка событий'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
