@@ -18,7 +18,7 @@ pygame.display.set_caption("Lana Del Rey")
 clock = pygame.time.Clock()
 
 # Загрузка фона
-background = pygame.image.load(os.path.join("music-elements", "lana-background.png"))
+background = pygame.image.load(os.path.join("music_images", "lana-background.png"))
 background = pygame.transform.scale(background, (800, 600))
 
 # Фон для кнопок
@@ -29,10 +29,10 @@ bg.fill((255, 228, 178))
 font2 = pygame.font.SysFont(None, 24)
 
 # Загрузка кнопок
-playb = pygame.image.load(os.path.join("music-elements", "play.png"))
-pausb = pygame.image.load(os.path.join("music-elements", "pause.png"))
-nextb = pygame.image.load(os.path.join("music-elements", "next.png"))
-prevb = pygame.image.load(os.path.join("music-elements", "back.png"))
+playb = pygame.image.load(os.path.join("music_images", "play.png"))
+pausb = pygame.image.load(os.path.join("music_images", "pause.png"))
+nextb = pygame.image.load(os.path.join("music_images", "next.png"))
+prevb = pygame.image.load(os.path.join("music_images", "back.png"))
 
 # Изменяем размер кнопок
 playb = pygame.transform.scale(playb, (60, 60))
