@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Загружаем изображения
 image_background = pygame.image.load('resources/AnimatedStreet.png')
-image_player = pygame.image.load('resources/Player.png')
+image_player = pygame.image.load('car2.png')
 image_enemy = pygame.image.load('resources/Enemy.png')
 image_coin = pygame.image.load('resources/coin.png')
 image_coin = pygame.transform.scale(image_coin, (40, 40))  # Масштабируем изображение монеты
@@ -137,8 +137,8 @@ while running:
         coin = Coin()
         all_sprites.add(coin)
         coin_sprites.add(coin)
-        if COINS % 8 == 0:
-            enemy.speed += 1
+        if COINS >= 10:
+            enemy.speed += 10
     # Отображаем количество монет
     coin_text = small_font.render(f"Coins: {COINS}", True, "black")
     screen.blit(coin_text, (10, 10))
