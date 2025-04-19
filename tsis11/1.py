@@ -4,7 +4,7 @@ conn = psycopg2.connect(
     host="host",
     database="dbname",
     user="user",
-    password="passsw"
+    password="passw"
 )
 
 def create_table():
@@ -128,7 +128,26 @@ create_insert_procedure()
 
 
 def create_delete_procedure():
-    pass
+    command = """
+    CREATE OR REPLACE PROCEDURE delete_user_by_value(
+        del_value VARCHAR,
+        by_name BOOLEAN
+    )
+    AS $$
+    BEGIN
+        IF by_name THEN
+            DELETE FROM phonebook WHERE user_name = del_value;
+        ELSE
+            DELETE FROM phonebook WHERE user_phone = del_value;
+        END IF;
+    END;
+    $$ LANGUAGE plpgsql;
+    """
+    with conn.cursor() as cur:  
+        cur.execute(command)
+        conn.commit()
+        print("Procedure 'delete_user_by_value' has been created.")
+create_delete_procedure()
 
 def query_by_pattern():
     pattern = input("Enter pattern to search in user name: ")
@@ -151,31 +170,45 @@ def insert_new_user():
         conn.commit()
         print("Insert new user operation completed.")
 
-    
+
+def delete_user_procedure():
+    choice = input("Delete by (name/phone): ").strip().lower()
+    value = input("Enter value to delete: ").strip()
+    by_name = True if choice == "name" else False
+
+    with conn.cursor() as cur:
+        cur.execute("CALL delete_user_by_value(%s, %s)", (value, by_name))
+        conn.commit()
+        print("Delete operation completed.")
+
+ 
 def menu():
     while True:
         print("\nPHONEBOOK MENU")
         print("1 - Insert manually") 
-        print("2 - Query by pattern")
-        print("3 - Update user")      
-        print("4 - Query users (name / phone / all / sw)")  
-        print("5 - Delete user")      
+        print("2 - Update user")      
+        print("3 - Query users (name / phone / all / sw)")  
+        print("4 - Delete user")      
+        print("5 - Query by pattern")
         print("6 - Insert new user")     
-        print("7 - Exit")        
+        print("7 - Delete data by username or phone")        
+        print("8 - Exit")        
         choice = input("Choose option: ")
         if choice == '1':
             insert()
         elif choice == '2':
-            query_by_pattern()
-        elif choice == '3':
             update_contact()
-        elif choice == '4':
+        elif choice == '3':
             query_data()
-        elif choice == '5':
+        elif choice == '4':
             delete_contact()
+        elif choice == '5':
+            query_by_pattern()
         elif choice == '6':
             insert_new_user()
         elif choice == '7':
+            delete_user_procedure()
+        elif choice == '8':
             break
         else:
             print("Invalid option!")
