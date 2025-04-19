@@ -6,7 +6,7 @@ import psycopg2
 conn = psycopg2.connect(
     dbname="postgres",
     user="postgres",
-    password="passw",
+    password="22877",
     host="localhost",
     port="5432"
 )
@@ -154,7 +154,6 @@ class Food:
                not any(w.x == new_pos.x and w.y == new_pos.y for w in wall.body):
                 self.pos = new_pos
                 break
-
 snake = Snake()
 wall = Wall()
 wall.load_level(snake.level)
