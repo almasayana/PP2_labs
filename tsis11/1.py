@@ -1,10 +1,10 @@
 import psycopg2  
 
 conn = psycopg2.connect(
-    host="host",
-    database="dbname",
-    user="user",
-    password="passw"
+    host="localhost",
+    database="postgres",
+    user="postgres",
+    password="22877"
 )
 
 def create_table():
@@ -93,7 +93,7 @@ def create_function():
         RETURN QUERY
         SELECT phonebook.user_id, phonebook.user_name, phonebook.user_phone
         FROM phonebook
-        WHERE phonebook.user_name ILIKE '%' || pattern || '%';
+        WHERE phonebook.user_name LIKE '%' || pattern || '%';
     END;
     $$ LANGUAGE plpgsql;
     """
