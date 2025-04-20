@@ -1,10 +1,10 @@
 import psycopg2  
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="postgres",
-    user="postgres",
-    password="22877"
+    host="host",
+    database="dbname",
+    user="user",
+    password="passw"
 )
 
 def create_table():
